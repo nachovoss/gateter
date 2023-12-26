@@ -1,0 +1,30 @@
+<!-- templates/home.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Welcome to Gateter!</h1>
+
+<p>
+  Share your maullidos with the world.
+</p>
+
+<ul>
+  
+    <iframe src="https://giphy.com/embed/ES4Vcv8zWfIt2" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p></p>
+
+  {% if user.is_authenticated %}
+    <li><a href="{% url 'post_maullido' %}">Post a Maullido</a></li>
+    <li><a href="{% url 'user_page' username=user.username %}">My Maullidos</a></li>
+    {% else %}
+    <li><a href="{% url 'register' %}">Register</a></li>
+    <li><a href="{% url 'login' %}">Login</a></li> 
+
+  {% endif %}
+</ul>
+    <h4>Latest Maullidos</h4>
+  {% for maullido in maullidos %}
+    <p>{{ maullido.contenido }}</p>
+  {% endfor %}
+
+{% endblock %}

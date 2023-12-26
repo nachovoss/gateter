@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+{% load widget_tweaks %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GATETER</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background: linear-gradient(to right, #8e81f0, #ed05bb);
+            font-family: 'Arial', sans-serif;
+        }
+    
+        .navbar {
+            background-color: #5d6af9;
+        }
+    
+        .navbar-brand, .navbar-nav li a {
+            color: white !important;
+        }
+    
+        .container {
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    
+    {% if user.is_authenticated %}
+            Hello, {{ user.username }}! <a href="{% url 'logout' %}">Logout</a>
+    {% endif %}
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="{% url 'home' %}">Gateter</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'register' %}">Register</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<!-- Bootstrap JS, Popper.js -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

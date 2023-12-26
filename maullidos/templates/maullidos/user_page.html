@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>{{ user_profile.username }}</h2>
+{% if user.username == user_profile.username %}
+<a href="{% url 'post_maullido' %}">New Maullido</a>
+{% endif %}
+<p>----</p>
+<h5>Maullidos</h5>
+{% for maullido in maullidos %}
+<p>{{ maullido.contenido }}</p>
+<hr>
+{% endfor %}
+<iframe src="https://giphy.com/embed/YNlLqRY23XBjW" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p></p>
+{% endblock %}
